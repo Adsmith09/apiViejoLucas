@@ -31,7 +31,7 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-        if (!$request->nombres || !$request->apellidos || !$request->correo )
+        if (!$request->nombres || !$request->apellidos || !$request->correo || !$request->telefono  )
 		{         
 			return response()->json(['errors'=>array(['code'=>422,'message'=>'Faltan datos para acceder a su solicitud.'])], 422);
         }
