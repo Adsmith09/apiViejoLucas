@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class DetalleProducto extends Model
 {
     protected $table = "detalle_producto";
-    protected $fillable = array('carne', 'queso', 'huevo', 'platanoFrito', 'jamon', 'piña', 'tocino', 'salcHuachana', 'lechuga', 'tomate', 'vigencia', 'idProducto', 'idAdicional');
+    protected $fillable = array('idIngrediente', 'precio', 'cantidad', 'idProducto');
     public $timestamps = false;
 
     public function detalleOrden()
@@ -23,7 +23,7 @@ class DetalleProducto extends Model
     }
 
     public function adicional() {
-        return $this->belongsTo('App\Models\Adicional', 'idAdicional');
+        return $this->belongsTo('App\Models\Ingrediente', 'idIngrediente');
     }
 
 }
