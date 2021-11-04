@@ -13,12 +13,17 @@ class ProductoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $producto=Cache::remember('cacheproducto',20/60, function()
         {
             return Producto::all();
+            
         });
+
+        // if($request->categoria){
+        //     $producto=$producto->whereIn('categoria', $request->categoria);
+        // }
 
         return response()->json(['status'=>'ok','data'=>$producto], 200);
     }
